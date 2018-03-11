@@ -6,8 +6,10 @@ const mongoose        = require('mongoose');
 const cors            = require('cors')
 const app             = express();
 
-
 require('dotenv').config()
+
+mongoose.connect('mongodb://localhost:27017/todofancy')
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors())
