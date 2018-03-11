@@ -102,6 +102,7 @@ module.exports = {
                             res.status(200).json({
                                 message : `Login with facebook success !`,
                                 data    : ({
+                                    _id   : user._id,
                                     id_fb : user.id_fb,
                                     name  : user.name,
                                     email : user.email,
@@ -123,6 +124,7 @@ module.exports = {
                         res.status(200).json({
                             message : `Login with facebook success !`,
                             data    : ({
+                                _id   : newUser._id,
                                 id_fb : newUser.id_fb,
                                 name  : newUser.name,
                                 email : newUser.email,
