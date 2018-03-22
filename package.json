@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@google-cloud/translate": "^1.1.0",
+    "axios": "^0.18.0",
     "bcrypt": "^1.0.3",
     "body-parser": "~1.18.2",
     "cors": "^2.8.4",
@@ -15,6 +17,8 @@
     "fb": "^2.0.0",
     "jsonwebtoken": "^8.2.0",
     "mongodb": "^3.0.4",
-    "mongoose": "^5.0.9"
+    "mongoose": "^5.0.9",
+    "nodemailer": "^4.6.3",
+    "xoauth2": "^1.2.0"
   }
 }
