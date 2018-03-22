@@ -14,7 +14,6 @@ module.exports = {
             password : userPassword,
             name     : req.body.name,
             email    : req.body.email,
-            phoneNumber : req.body.phone_number,
             gender   : req.body.gender,
             picture  : req.body.picture || null
         },(err,user) => {
@@ -24,9 +23,15 @@ module.exports = {
                     data    : {}
                 })
             } else {
+                let token = jwt.sign({userid : user._id}, process.env.SECRET)
                 res.status(200).json({
                     message : `Sign Up success !`,
-                    data    : user
+                    data    : {
+                        id: user._id,
+                        email: user.email,
+                        name: user.name,
+                        token: token
+                    }
                 })
             }
         })
@@ -59,15 +64,15 @@ module.exports = {
                         }
                     })
                 } else {
-                    res.status(400).json({
+                    res.status(202).json({
                         message : `Sign in failed, username/email or password wrong`,
-                        data    : {}
+                        data    : null
                     })
                 }
             } else {
-                res.status(400).json({
+                res.status(202).json({
                     message : `Sign in failed, username/email or password wrong`,
-                    data    : {}
+                    data    : null
                 })
             }
 
@@ -102,7 +107,7 @@ module.exports = {
                             res.status(200).json({
                                 message : `Login with facebook success !`,
                                 data    : ({
-                                    _id   : user._id,
+                                    id   : user._id,
                                     id_fb : user.id_fb,
                                     name  : user.name,
                                     email : user.email,
@@ -124,7 +129,7 @@ module.exports = {
                         res.status(200).json({
                             message : `Login with facebook success !`,
                             data    : ({
-                                _id   : newUser._id,
+                                id   : newUser._id,
                                 id_fb : newUser.id_fb,
                                 name  : newUser.name,
                                 email : newUser.email,
