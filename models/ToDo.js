@@ -7,7 +7,8 @@ const todoSchema = new Schema({
     tag   : [String],
     userid  : {
         type : Schema.Types.ObjectId, ref : 'User'
-    }
+    },
+    status : String
 })
 
 let ToDo = mongoose.model('ToDo', todoSchema)
